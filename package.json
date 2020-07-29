@@ -8,10 +8,10 @@
     "dev-server": "webpack-dev-server"
   },
   "dependencies": {
-    "node-polyglot": "^2.3.0"
+    "node-polyglot": "^2.4.0"
   },
   "devDependencies": {
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack": "^4.44.0",
+    "webpack-dev-server": "^3.11.0"
   }
 }
