@@ -25,8 +25,8 @@ class TranslationApp {
     /*
       mainというidがセットされた要素の下にh1タグで現在のlocaleに応じて、メッセージを表示します。 
     */
-   polyglot.t("hello");
-   //"こんにちは、世界"
+    div.innerHTML = `${this.polyglot.t("hello")}`;
+    console.log(this.polyglot.t);
   }
 
 }
