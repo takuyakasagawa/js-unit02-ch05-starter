@@ -10,7 +10,7 @@ class TranslationApp {
       現在のLocaleに合わせて、polyglotにメッセージをセットします。
       メッセージのセットにはpolyglot.extend()を利用します。
     */
-   polyglot.extend({
+   this.polyglot.extend({
     "hello": "こんにちは、世界"
     });
   }
@@ -25,12 +25,10 @@ class TranslationApp {
     /*
       mainというidがセットされた要素の下にh1タグで現在のlocaleに応じて、メッセージを表示します。 
     */
-    div.innerHTML = `${this.polyglot.t("hello")}`;
-    console.log(this.polyglot.t);
+    //div.innerHTML = `${this.polyglot.t("hello")}`;
+    console.log('関数showMessage呼び出し');
   }
-
 }
-
 
 {
   const app = new TranslationApp();
