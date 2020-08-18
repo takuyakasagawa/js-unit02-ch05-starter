@@ -1,17 +1,31 @@
 import Polyglot from 'node-polyglot';
+import Cookies from 'js-cookie';
+
 
 class TranslationApp {
   constructor() {
     this.polyglot = new Polyglot();
+    this.updateLocale = this.updateLocale.bind(this);
+    Cookies.set('locale', 'ja-JP');
   }
-
+  
   setup() {
     /* 
       現在のLocaleに合わせて、polyglotにメッセージをセットします。
       メッセージのセットにはpolyglot.extend()を利用します。
     */
-   this.polyglot.extend({
-    "hello": "こんにちは、世界"
+    if (条件式) {//現在取得されてる言語が日本語ならば
+      // 処理内容
+    } else {
+      // 処理内容が return 値;のようにある場合
+    }
+
+    this.polyglot.extend({
+      "hello": "こんにちは、世界"
+    });
+
+    this.polyglot.extend({
+      "hello": "Hello World"
     });
   }
 
@@ -19,14 +33,15 @@ class TranslationApp {
     /*
       ボタンにセットされたdata-localeを元に現在のlocaleを変更します。
     */
+   this.showMessage();
   }
 
   showMessage() {
     /*
       mainというidがセットされた要素の下にh1タグで現在のlocaleに応じて、メッセージを表示します。 
     */
-    //div.innerHTML = `${this.polyglot.t("hello")}`;
-    console.log('関数showMessage呼び出し');
+    const main = document.getElementById('main');
+    main.innerHTML = `<h1>${this.polyglot.t("hello")}</h1>`;
   }
 }
 
@@ -38,4 +53,11 @@ class TranslationApp {
   
   const button2 = document.getElementById('button2');
   button2.addEventListener("click", app.updateLocale);
+
+  app.showMessage();
 }
+
+// function showMessage() {
+//   //関数showMessageの実装内容
+// }
+// showMessage();
