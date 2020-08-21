@@ -1,12 +1,21 @@
 import Polyglot from 'node-polyglot';
-import Cookies from 'js-cookie';
 
+let localData1 = {
+  local: jp,
+}
+
+let localData2 = {
+  local: en,
+}
+
+localStorage.setItem('jp', localData1);
+localStorage.setItem('en', localData2);
 
 class TranslationApp {
   constructor() {
     this.polyglot = new Polyglot();
     this.updateLocale = this.updateLocale.bind(this);
-    Cookies.set('locale', 'ja-JP');
+    let readData = localStorage.getItem('jp');
   }
   
   setup() {
