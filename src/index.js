@@ -1,11 +1,11 @@
 import Polyglot from 'node-polyglot';
 
 let localData1 = {
-  local: jp,
+  local : 'jp'
 }
 
 let localData2 = {
-  local: en,
+  local : 'en'
 }
 
 localStorage.setItem('jp', localData1);
@@ -16,6 +16,7 @@ class TranslationApp {
     this.polyglot = new Polyglot();
     this.updateLocale = this.updateLocale.bind(this);
     let readData = localStorage.getItem('jp');
+    console.log(readData);
   }
   
   setup() {
