@@ -1,22 +1,17 @@
 import Polyglot from 'node-polyglot';
 
-let localData1 = {
-  local : 'jp'
-}
+// localeを取得するのが良さそうですね。以下の場合は日本語のみを取得し続けることになります
+// localeもしくは、localeがないのであれば日本語localeとするのが良さそうです
+// もしくは、という演算子がありましたね、基礎編Lesson 1か2で習得しています
+// スコープの問題がconstructorメソッド内にはあります。constructorメソッド内の変数は、全てconstructorメソッドの外で呼び出すことを前提としていますから、スコープを意識した書き方をしましょう
 
-let localData2 = {
-  local : 'en'
-}
 
-localStorage.setItem('jp', localData1);
-localStorage.setItem('en', localData2);
+let readData = localStorage.getItem('jp');
 
 class TranslationApp {
   constructor() {
     this.polyglot = new Polyglot();
     this.updateLocale = this.updateLocale.bind(this);
-    let readData = localStorage.getItem('jp');
-    console.log(readData);
   }
   
   setup() {
