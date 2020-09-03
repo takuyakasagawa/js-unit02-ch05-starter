@@ -42,9 +42,9 @@ class TranslationApp {
     localStorage.setItem('localeData', newLocale);
     
     if (newLocale === 'en') {
-      this.currentLocale = localStorage.getItem('en');
+      this.currentLocale = localStorage.getItem('locale')||'en';
     } else {
-      this.currentLocale = localStorage.getItem('ja');
+      this.currentLocale = localStorage.getItem('locale')||'ja';
     }
   }
 
