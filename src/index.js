@@ -5,13 +5,11 @@ import Polyglot from 'node-polyglot';
 // もしくは、という演算子がありましたね、基礎編Lesson 1か2で習得しています
 // スコープの問題がconstructorメソッド内にはあります。constructorメソッド内の変数は、全てconstructorメソッドの外で呼び出すことを前提としていますから、スコープを意識した書き方をしましょう
 
-
-let readData = localStorage.getItem('jp');
-
 class TranslationApp {
   constructor() {
     this.polyglot = new Polyglot();
     this.updateLocale = this.updateLocale.bind(this);
+    this.currentLocale = localStorage.getItem('locale') || 'ja';
   }
   
   setup() {
@@ -19,26 +17,35 @@ class TranslationApp {
       現在のLocaleに合わせて、polyglotにメッセージをセットします。
       メッセージのセットにはpolyglot.extend()を利用します。
     */
-    if (条件式) {//現在取得されてる言語が日本語ならば
+    const currentLocale = this.currentLocale;
+    if (currentLocale === 'ja') {//現在取得されてるlocalが日本語ならば
       // 処理内容
+      this.polyglot.extend({
+        "hello": "こんにちは、世界"
+      });
     } else {
       // 処理内容が return 値;のようにある場合
+      this.polyglot.extend({
+        "hello": "Hello World"
+      });
     }
-
-    this.polyglot.extend({
-      "hello": "こんにちは、世界"
-    });
-
-    this.polyglot.extend({
-      "hello": "Hello World"
-    });
   }
 
   updateLocale(e) {
     /*
       ボタンにセットされたdata-localeを元に現在のlocaleを変更します。
     */
-   this.showMessage();
+    this.setup();
+    this.showMessage();
+    const newLocale = e.target.dataset.locale;
+    console.log(newLocale);
+    localStorage.setItem('localeData', newLocale);
+    
+    if (newLocale === 'en') {
+      this.currentLocale = localStorage.getItem('en');
+    } else {
+      this.currentLocale = localStorage.getItem('ja');
+    }
   }
 
   showMessage() {
@@ -59,6 +66,7 @@ class TranslationApp {
   const button2 = document.getElementById('button2');
   button2.addEventListener("click", app.updateLocale);
 
+  app.setup();
   app.showMessage();
 }
 
