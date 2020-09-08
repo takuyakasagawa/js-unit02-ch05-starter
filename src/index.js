@@ -41,11 +41,11 @@ class TranslationApp {
     console.log(newLocale);
     localStorage.setItem('localeData', newLocale);
     
-    if (newLocale === 'en') {
-      this.currentLocale = localStorage.getItem('locale')||'en';
-    } else {
-      this.currentLocale = localStorage.getItem('locale')||'ja';
-    }
+    
+    // ↓ この方法では言語があと1000万言語増えると対応できませんね & 条件分岐の記述があるので、その分コードが長くなります
+    // 「その時に選択された言語」を上記で取得していますから、this.currentLocaleに値として代入すると良いです
+    newLocale = this.currentLocale;
+
   }
 
   showMessage() {
