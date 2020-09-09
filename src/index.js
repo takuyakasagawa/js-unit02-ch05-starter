@@ -11,7 +11,7 @@ class TranslationApp {
     this.updateLocale = this.updateLocale.bind(this);
     this.currentLocale = localStorage.getItem('locale') || 'ja';
   }
-  
+
   setup() {
     /* 
       現在のLocaleに合わせて、polyglotにメッセージをセットします。
@@ -39,13 +39,10 @@ class TranslationApp {
     this.showMessage();
     const newLocale = e.target.dataset.locale;
     console.log(newLocale);
+    console.log(this.currentLocale);
     localStorage.setItem('localeData', newLocale);
-    
-    
-    // ↓ この方法では言語があと1000万言語増えると対応できませんね & 条件分岐の記述があるので、その分コードが長くなります
-    // 「その時に選択された言語」を上記で取得していますから、this.currentLocaleに値として代入すると良いです
-    this.currentLocale　= newLocale;
 
+    this.currentLocale　= newLocale;
   }
 
   showMessage() {
