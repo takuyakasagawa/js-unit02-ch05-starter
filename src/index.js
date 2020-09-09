@@ -44,7 +44,7 @@ class TranslationApp {
     
     // ↓ この方法では言語があと1000万言語増えると対応できませんね & 条件分岐の記述があるので、その分コードが長くなります
     // 「その時に選択された言語」を上記で取得していますから、this.currentLocaleに値として代入すると良いです
-    newLocale = this.currentLocale;
+    this.currentLocale　= newLocale;
 
   }
 
